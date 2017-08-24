@@ -1,0 +1,10 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: composer:1.5.1
+    steps:
+      - checkout
+      - run: composer install
+      - run: ./vendor/phpunit/phpunit/phpunit --configuration src/phpunit.xml.dist .
+    working_directory: /tmp/state-machine
